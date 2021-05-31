@@ -24,7 +24,6 @@ function renderToString(context) {
   });
 }
 
-// 第 3 步：添加一个中间件来处理所有请求
 const handleRequest = async (ctx, next) => {
   const url = ctx.path
   if (url.includes('.')) {
@@ -36,7 +35,6 @@ const handleRequest = async (ctx, next) => {
     title: "ssr test",
     url
   };
-  // 将 context 数据渲染为 HTML
   const html = await renderToString(context);
   ctx.body = html;
 }
