@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <h1>This is an about page</h1>
-    <p>{{ info.hitokoto }}</p>
+    <p>{{ data.hitokoto }}</p>
     <p><router-link to="/">index</router-link></p>
   </div>
 </template>
@@ -9,20 +9,17 @@
 <script>
 export default {
   name: 'About',
-  data () {
-    return {
-      info: {}
+  asyncData ({ store, route }) {
+    console.log(route.path)
+    return store.dispatch('getText2')
+  },
+  computed: {
+    data () {
+      return this.$store.getters.data2
     }
   },
   mounted () {
-    // this.getDate()
-  },
-  methods: {
-    getDate () {
-      this.$api.getTest().then(res => {
-        this.info = res
-      })
-    }
+    console.log(this.$store.getters)
   }
 }
 </script>
