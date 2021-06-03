@@ -10,7 +10,6 @@
 export default {
   name: 'About',
   asyncData ({ store, route }) {
-    console.log(route.path)
     return store.dispatch('getText2')
   },
   computed: {

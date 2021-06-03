@@ -12,7 +12,7 @@ module.exports = {
     headers: { 'Access-Control-Allow-Origin': '*' }
   },
   css: {
-    extract: process.env.NODE_ENV === 'production'
+    extract: false
   },
   configureWebpack: () => ({
     entry: `./src/entry-${target}.js`,
@@ -22,11 +22,7 @@ module.exports = {
     output: {
       libraryTarget: TARGET_NODE ? 'commonjs2' : undefined
     },
-    externals: TARGET_NODE
-      ? nodeExternals({
-        allowlist: [/\.css$/]
-      })
-      : undefined,
+    externals: TARGET_NODE ? nodeExternals({ allowlist: [/\.css$/] }) : undefined,
     optimization: {
       splitChunks: TARGET_NODE ? false : undefined
     },

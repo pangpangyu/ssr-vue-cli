@@ -17,7 +17,7 @@ app.use(koaMount('/public', koaStatic(resolve("../public"))));
 const port = process.env.PORT || 10000;
 
 app.listen(port, () => {
-  console.log(`server started at localhost:${port}`);
+  console.log(`server started at http://localhost:${port}`);
 });
 
 module.exports = app
